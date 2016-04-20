@@ -3,7 +3,6 @@
 
 # Einfaches Skript, das Geodaten aus Wikipedia abgreift 
 # Oliver Schallert, 2016
-# Habe Fehlerbehandlung dazu geschrieben
 
 import re
 from bs4 import BeautifulSoup
