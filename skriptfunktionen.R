@@ -44,6 +44,7 @@ title(main="Doubly-filled COMPs in German Dialects\n (Functions)", col.main="bla
 bp <-legend('bottomleft',inset=c(0.1,0.0),legend = c("Subject","Object","Oblique","Predicative","Adverbial"), cex=0.8, col = c('tomato','slateblue','violetred','seagreen','orange'), pch = 15, bty = 'n')
   
  
+# Speichern im aktuellen Arbeitsverzeichnis 
 
 setwd("/Users/uetzgenfatz/Desktop")
 quartz.save("dfcs_funktionen.png","png", width=12, height=10, dpi = 150) 
