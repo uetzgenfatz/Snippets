@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Simple script that scrapes GeoHack (via Wikipedia) for geo coordinates of given list of place names (input: .csv)
+# Simple script that scrapes GeoHack (via Wikipedia) for geo coordinates of a given list of place names (input: .csv)
 # Oliver Schallert, 2021
 # only compatible with Python 3
 
