@@ -1,22 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Einfaches Skript, das Geodaten aus Wikipedia abgreift 
-# Oliver Schallert, 2016
+# Simple script that scrapes GeoHack (via Wikipedia) for geo coordinates of given list of place names (input: .csv)
+# Oliver Schallert, 2021
+# only compatible with Python 3
 
 import re
 from bs4 import BeautifulSoup
-import urllib2
+import urllib.request as urllib2
 import csv
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 url="https://de.wikipedia.org/wiki/"
 
 
 t = open("koordinaten.csv", 'wt') 
-print >> t, "Ort"+";"+"X"+";"+"Y"
+print("Ort"+";"+"X"+";"+"Y", file=t)
 
-with open ("Orte.csv") as csvfile:
+with open ("orte.csv") as csvfile:
 	f = csv.DictReader(csvfile)
 	for row in f:
 		try:
@@ -28,11 +31,11 @@ with open ("Orte.csv") as csvfile:
 			hai = soup.find('span', {'class' : 'longitude'})
 			long = str(hoi.get_text())
 			lat = str(hai.get_text())
-			print >> t, ort+";"+lat+";"+long
+			print(ort+";"+lat+";"+long, file=t)
 		except (AttributeError, urllib2.HTTPError):
 			lat = 'NA'
 			long = 'NA'
-			print >> t, ort+";"+lat+";"+long
+			print(ort+";"+lat+";"+long, file=t)
 		
 t.close()
 
