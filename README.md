@@ -1,3 +1,3 @@
 # Code snippets
 
-Small scripts I happend to write for analyzing data for my research. Perhaps they might be useful for others, too.
+Small scripts I happend to write for analyzing or recoding research data. Perhaps they might be useful for others, too...
