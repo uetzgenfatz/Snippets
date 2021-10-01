@@ -1,2 +1,3 @@
-# data_and_code
-Data and code from my research
+# Code snippets
+
+Small scripts I happend to write for analyzing data for my research. Perhaps they might be useful for others, too.
