@@ -8,6 +8,8 @@ library(tidyr)
 
 # Set working directory, if you like.
 
+# Please use the test file "test.csv" to check the functionality of this snippet.
+
 daten <- read.csv("...", sep=",", row.names=,1, na.strings="")
 
 # Specify input path.
