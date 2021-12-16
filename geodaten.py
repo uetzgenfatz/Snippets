@@ -4,7 +4,7 @@
 # Simple script that scrapes GeoHack (via Wikipedia) for geo coordinates of a given list of place names (input: .csv)
 # Oliver Schallert, 2021
 # only compatible with Python 3
-# bugfixes (full compatibility with Unicode input by Alexander Dröge and Phillip Alday
+# bugfixes (full compatibility with Unicode input) by Alexander Dröge and Phillip Alday
 
 import re
 from bs4 import BeautifulSoup
