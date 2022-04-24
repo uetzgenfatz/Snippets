@@ -126,7 +126,7 @@ Anova(model)
 dat$FittedBewertung <- fitted(model)
 
 
-# Plots speichern
+# Save plots
 
 model_fit <-
 ggplot(dat, aes(x=VerbnahPerson, y=Bewertung)) + 
