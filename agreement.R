@@ -107,7 +107,7 @@ contrasts(dat$Verb) <- contr.Sum(levels(dat$Verb))
 #' allowing for all plausible sources of interindividual variation that would be observable in this experiment
 #' when we take effect size into account
 #' also....
-#' I originally had
+#' We originally had
 #' (1 + Verb + Wortstellung + VerbnahPerson + VerbfernPerson | Informant), 
 #' but after doing diagnostics with rePCA() below, simplified a bit
 #' this model is still singular in both Informant and Item, but that might change with additional
