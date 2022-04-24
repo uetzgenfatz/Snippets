@@ -1,6 +1,6 @@
 #' ---
 #' title: Disjuntice Agreement
-#' authors: 
+#' author: 
 #'  - Phillip M. Alday, Oliver Schallert
 #' date: 2022-04-24
 #' ---
@@ -109,9 +109,9 @@ contrasts(dat$Verb) <- contr.Sum(levels(dat$Verb))
 #' also....
 #' We originally had
 #' (1 + Verb + Wortstellung + VerbnahPerson + VerbfernPerson | Informant), 
-#' but after doing diagnostics with rePCA() below, simplified a bit
+#' but after doing diagnostics with rePCA() below, we simplified a bit
 #' this model is still singular in both Informant and Item, but that might change with additional
-#' data, so I'm leaving them in for now.
+#' data, so we’re leaving them in for now.
 model <- lmer(Bewertung ~ 1 + Verb / (Wortstellung * (VerbnahPerson + VerbfernPerson)) + 
                         (1|Item) + 
                         (1 + Verb + Wortstellung + VerbnahPerson | Informant), 
@@ -131,13 +131,18 @@ dat$FittedBewertung <- fitted(model)
 model_fit <-
 ggplot(dat, aes(x=VerbnahPerson, y=Bewertung)) + 
     stat_summary(aes(color="observed"), fun.data=mean_cl_boot) +
-    stat_summary(aes(y=FittedBewertung, color="model"), fun.data=mean_cl_boot) + facet_grid(Wortstellung ~ Verb) + xlab("Verbform") + ylab("Bewertung")
-
+    stat_summary(aes(y=FittedBewertung, color="model"), fun.data=mean_cl_boot) + facet_grid(Wortstellung ~ Verb) + xlab("Verbform") + ylab("Bewertung") + scale_color_discrete(name  ="Modellgüte",
+                              breaks=c("model", "observed"),
+                              labels=c("Modell", "Daten"))    
+    
 all_effects <- 
     ggplot(dat, aes(x=Verb, y=Bewertung, color=Wortstellung)) + stat_summary(fun.data=mean_cl_boot) + facet_wrap(~VerbnahPerson) + xlab("Verbform") + ylab("Bewertung")
 
 single_effects_1 <- 
 ggplot(subset(dat, VerbnahPerson=='1'), aes(x=Verb, y=Bewertung, color=Wortstellung)) + stat_summary(fun.data=mean_cl_boot) + xlab("Verbform") + ylab("Bewertung")
+
+single_effects_2 <- 
+    ggplot(subset(dat, VerbnahPerson=='2'), aes(x=Verb, y=Bewertung, color=Wortstellung)) + stat_summary(fun.data=mean_cl_boot) + xlab("Verbform") + ylab("Bewertung")
 
 single_effects_3 <- 
     ggplot(subset(dat, VerbnahPerson=='3'), aes(x=Verb, y=Bewertung, color=Wortstellung)) + stat_summary(fun.data=mean_cl_boot) + xlab("Verbform") + ylab("Bewertung")
@@ -150,11 +155,14 @@ setwd("/Users/uetzelsche/Desktop")
 single_effects_1
 quartz.save("1sg.png","png", dpi = 150) 
 
+single_effects_2
+quartz.save("2sg.png","png", dpi = 150)
+
 single_effects_3
 quartz.save("3sg.png","png", dpi = 150) 
 
 single_effects_2pl
-quartz.save("plsg.png","png", dpi = 150) 
+quartz.save("2pl.png","png", dpi = 150) 
 
 model_fit
 quartz.save("modelfit.png","png", dpi = 150) 
